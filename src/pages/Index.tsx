@@ -1,6 +1,5 @@
-
 import { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import About from "../components/About";
@@ -13,14 +12,51 @@ import Footer from "../components/Footer";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("hero");
+
+  const sectionIds = [
+    "hero",
+    "about",
+    "skills",
+    "projects",
+    "education",
+    "achievements",
+    "contact"
+  ];
+
+  const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
+
   const { scrollYProgress } = useScroll();
   const scrollProgress = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const [scrollPercentage, setScrollPercentage] = useState(0);
-  
+
   useEffect(() => {
     const unsubscribe = scrollProgress.onChange(setScrollPercentage);
     return () => unsubscribe();
   }, [scrollProgress]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntry = entries.find((entry) => entry.isIntersecting);
+        if (visibleEntry) {
+          setActiveSection(visibleEntry.target.id);
+        }
+      },
+      { threshold: 0.6 }
+    );
+
+    sectionIds.forEach((id) => {
+      const element = sectionRefs.current[id];
+      if (element) observer.observe(element);
+    });
+
+    return () => {
+      sectionIds.forEach((id) => {
+        const element = sectionRefs.current[id];
+        if (element) observer.unobserve(element);
+      });
+    };
+  }, []);
 
   return (
     <motion.div
@@ -30,44 +66,34 @@ const Index = () => {
       className="relative"
     >
       <div className="fixed top-0 left-0 w-full h-1 bg-muted z-50">
-        <motion.div 
+        <motion.div
           className="h-full bg-gradient-to-r from-portfolio-blue to-portfolio-accent"
           style={{ width: `${scrollPercentage}%` }}
         />
       </div>
-      
+
       <Header activeSection={activeSection} />
-      
+
       <main>
-        <section id="hero" onFocus={() => setActiveSection("hero")}>
-          <Hero />
-        </section>
-        
-        <section id="about" onFocus={() => setActiveSection("about")}>
-          <About />
-        </section>
-        
-        <section id="skills" onFocus={() => setActiveSection("skills")}>
-          <Skills />
-        </section>
-        
-        <section id="projects" onFocus={() => setActiveSection("projects")}>
-          <Projects />
-        </section>
-        
-        <section id="education" onFocus={() => setActiveSection("education")}>
-          <Education />
-        </section>
-        
-        <section id="achievements" onFocus={() => setActiveSection("achievements")}>
-          <Achievements />
-        </section>
-        
-        <section id="contact" onFocus={() => setActiveSection("contact")}>
-          <Contact />
-        </section>
+        {sectionIds.map((id) => (
+          <section
+            key={id}
+            id={id}
+            ref={(el) => (sectionRefs.current[id] = el)}
+          >
+            {{
+              hero: <Hero />,
+              about: <About />,
+              skills: <Skills />,
+              projects: <Projects />,
+              education: <Education />,
+              achievements: <Achievements />,
+              contact: <Contact />
+            }[id]}
+          </section>
+        ))}
       </main>
-      
+
       <Footer />
     </motion.div>
   );

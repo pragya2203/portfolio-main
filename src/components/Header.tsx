@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -25,7 +24,6 @@ const Header = ({ activeSection }: HeaderProps) => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -40,6 +38,7 @@ const Header = ({ activeSection }: HeaderProps) => {
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-20">
+        {/* Logo */}
         <a href="#hero" className="flex items-center space-x-2">
           <motion.div
             initial={{ scale: 0 }}
@@ -64,27 +63,16 @@ const Header = ({ activeSection }: HeaderProps) => {
             Pragya Singh
           </motion.span>
         </a>
-        
+
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-1">
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
-                activeSection === item.href.substring(1) 
-                  ? 'text-portfolio-accent' 
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
+              className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
             >
               {item.name}
-              {activeSection === item.href.substring(1) && (
-                <motion.div
-                  className="h-0.5 bg-portfolio-accent mt-1"
-                  layoutId="activeSection"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
             </a>
           ))}
         </nav>
@@ -92,7 +80,7 @@ const Header = ({ activeSection }: HeaderProps) => {
         {/* Mobile menu button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none"
+          className="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none dark:text-gray-300 dark:hover:text-white"
         >
           {!mobileMenuOpen ? <Menu size={24} /> : <X size={24} />}
         </button>
@@ -113,11 +101,7 @@ const Header = ({ activeSection }: HeaderProps) => {
                   key={item.name}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-3 py-2 text-base font-medium rounded-md transition-colors ${
-                    activeSection === item.href.substring(1)
-                      ? 'text-portfolio-accent' 
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
+                  className="block px-3 py-2 text-base font-medium rounded-md text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
                 >
                   {item.name}
                 </a>

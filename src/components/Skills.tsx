@@ -43,7 +43,8 @@ const Skills = () => {
         "Hoppscotch",
         "Render",
         "Cloudinary",
-        "Mapbox"
+        "Mapbox",
+        "Vercel"
       ]
     }
   };
