@@ -46,7 +46,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <p className="text-gray-600 mb-8 max-w-lg">
-              I'm a full-stack web developer with strong proficiency in React.js for building responsive, dynamic user interfaces. I also work with Node.js and Express to develop robust RESTful APIs and scalable backend systems.
+            I'm a full-stack web developer with a strong focus on backend development. I build robust and scalable server-side applications using Node.js, Express, and MongoDB, and integrate secure RESTful APIs and third-party services. On the frontend, I use React.js to develop clean, responsive, and interactive user interfaces that enhance user experience.
             </p>
           </motion.div>
           

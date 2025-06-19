@@ -16,42 +16,38 @@ const Skills = () => {
   const skillCategories: Record<string, SkillCategory> = {
     languages: {
       name: "Programming & Markup Languages",
-      skills: [
-        "C++", 
-        "C", 
-        "Python", 
-        "JavaScript (ES6+)", 
-        "HTML5", 
-        "CSS3", 
-        "PHP", 
-        "Java"
-      ]
+      skills: ["C++", "Python", "JavaScript (ES6+)", "HTML5", "CSS3"]
     },
     frameworks: {
       name: "Frameworks & Libraries",
       skills: [
-        "Node.js", 
-        "Express.js", 
-        "React.js", 
-        "Tailwind CSS", 
-        "Scikit-Learn", 
-        "jQuery", 
-        "Angular", 
+        "Node.js",
+        "Express.js",
+        "React.js",
+        "Tailwind CSS",
+        "jQuery",
+        "Bootstrap",
         "REST API"
       ]
     },
     databases: {
-      name: "Databases & Tools",
+      name: "Databases",
+      skills: ["MongoDB", "SQL", "MySQL"]
+    },
+    tools: {
+      name: "Tools & Cloud Platforms",
       skills: [
-        "MongoDB", 
-        "SQL", 
-        "MySQL", 
-        "Git", 
-        "GitHub"
+        "Git",
+        "GitHub",
+        "VS Code",
+        "Hoppscotch",
+        "Render",
+        "Cloudinary",
+        "Mapbox"
       ]
     }
   };
-
+  
   return (
     <div className="bg-gray-50 py-20" ref={ref}>
       <motion.div 

@@ -33,13 +33,13 @@ const About = () => {
           >
             <div className="prose max-w-none">
               <p className="text-lg text-gray-700 mb-4">
-              I'm Pragya Singh, a passionate full-stack web developer who loves turning ideas into interactive, user-friendly digital experiences. I specialize in building scalable web applications using React.js for the frontend and Node.js/Express for the backend. I also work with RESTful APIs, databases like PostgreSQL and MongoDB, and enjoy crafting clean, maintainable code.
+              I'm Pragya Singh, a Computer Science undergraduate with a deep interest in backend development and full-stack web technologies. I enjoy designing and building scalable, high-performance applications that solve real-world problems. My primary expertise lies in developing robust backend systems using Node.js, Express, and MongoDB, with experience in implementing secure authentication, payment integration, RESTful APIs, and cloud services.
               </p>
               <p className="text-lg text-gray-700 mb-4">
-              I'm constantly learning and exploring new technologies to stay ahead in the fast-evolving world of web development. Whether it's building intuitive user interfaces or optimizing backend performance, I thrive on solving problems and bringing value through technology.
+              On the frontend, I work with React.js and Bootstrap to build responsive and user-friendly interfaces that complement the functionality of the backend. I'm also familiar with tools like Razorpay, Cloudinary, and Mapbox, which I’ve used in production-grade projects.
               </p>
               <p className="text-lg text-gray-700">
-                I enjoy tackling complex challenges and continuously expanding my knowledge in the ever-evolving tech landscape. My goal is to create impactful digital solutions that enhance user experiences and provide value.
+              Beyond technical skills, I focus on writing clean, maintainable code and following best practices in version control, testing, and deployment. I’m passionate about continuous learning and eager to contribute to impactful projects, whether in a collaborative team environment or through independent work.
               </p>
             </div>
             

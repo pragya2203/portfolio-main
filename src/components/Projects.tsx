@@ -3,6 +3,8 @@ import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { Github, ExternalLink } from 'lucide-react';
+import airbnb from "../Assests/airbnb.png"
+import ipl from '../Assests/ipl.jpg'
 
 interface Project {
   id: number;
@@ -17,11 +19,11 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Sport E-Commerce Website",
-    description: "Built the frontend of a responsive React-based e-commerce website with focus on design, smooth navigation, and basic state management using useState and useContext. Developed login and logout pages to simulate user authentication flow and enhance user experience.",
-    technologies: ["React", "Tailwind CSS", "useState", "useContext"],
-    githubUrl: "https://github.com",
-    imageUrl: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80"
+    title: "Airstay – Airbnb Clone ",
+    description: "Airstay is a full-stack rental booking platform built with Node.js, Express, MongoDB, EJS, and Bootstrap. It features user authentication with Passport.js and a complete booking system with date validation, overlap prevention, and cancellation support. Payments are integrated via Razorpay, and images are uploaded securely using Multer and Cloudinary. Mapbox displays listing locations, and owner dashboards allow hosts to manage listings and view booking details. The platform includes a responsive UI, search, category filters, and is deployed on Render with MongoDB Atlas, with source code maintained on GitHub.",
+    technologies: ["Node.js", "Express", "MongoDB", "EJS", "Bootstrap","Passport.js", "Razorpay", "Cloudinary", "Mapbox"],
+    githubUrl: "https://github.com/pragya2203/airstay",
+    imageUrl: airbnb
   },
   {
     id: 2,
@@ -29,7 +31,7 @@ const projects: Project[] = [
     description: "Engineered a machine learning model to predict IPL match outcomes with around 81% accuracy using Logistic Regression. Preprocessed and analyzed match data using Pandas, trained the model with Scikit-learn, and visualized insights using Matplotlib and Seaborn.",
     technologies: ["Python", "Scikit-learn", "Pandas", "Streamlit", "Logistic Regression"],
     githubUrl: "https://github.com",
-    imageUrl: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1305&q=80"
+    imageUrl: ipl
   }
 ];
 
@@ -87,12 +89,12 @@ const ProjectCard = ({ project, index, isVisible }: ProjectCardProps) => {
       transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
       className="bg-white rounded-xl shadow-lg overflow-hidden card-hover"
     >
-      <div className="h-48 overflow-hidden">
+      <div className="overflow-hidden bg-white flex justify-center items-center" style={{ maxHeight: '300px' }}>
         {project.imageUrl ? (
           <img 
             src={project.imageUrl} 
             alt={project.title} 
-            className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-500"
+            className="w-full h-auto object-contain p-4 transition-transform duration-500 hover:scale-105"
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-r from-blue-100 to-indigo-100 flex items-center justify-center">
@@ -145,5 +147,6 @@ const ProjectCard = ({ project, index, isVisible }: ProjectCardProps) => {
     </motion.div>
   );
 };
+
 
 export default Projects;
